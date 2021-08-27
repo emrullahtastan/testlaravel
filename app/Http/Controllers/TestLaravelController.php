@@ -47,9 +47,9 @@ class TestLaravelController extends Controller
      * @param \App\Models\TestLaravel $testLaravel
      * @return \Illuminate\Http\Response
      */
-    public function show(TestLaravel $testLaravel)
+    public function show(TestLaravel $record)
     {
-        return view("recoreds.show", compact("record"));
+        return view("records.show", compact("record"));
     }
 
     /**
@@ -58,7 +58,7 @@ class TestLaravelController extends Controller
      * @param \App\Models\TestLaravel $testLaravel
      * @return \Illuminate\Http\Response
      */
-    public function edit(TestLaravel $testLaravel)
+    public function edit(TestLaravel $record)
     {
         return view("records.edit", compact("record"));
     }
@@ -70,10 +70,10 @@ class TestLaravelController extends Controller
      * @param \App\Models\TestLaravel $testLaravel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TestLaravel $testLaravel)
+    public function update(Request $request, TestLaravel $record)
     {
         $request->validate(["name"=>"required"]);
-        $testLaravel->update($request->all());
+        $record->update($request->all());
         return redirect()->route("records.index")->with("success","Updated");
     }
 
@@ -83,9 +83,9 @@ class TestLaravelController extends Controller
      * @param \App\Models\TestLaravel $testLaravel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TestLaravel $testLaravel)
+    public function destroy(TestLaravel $record)
     {
-        $testLaravel->delete();
+        $record->delete();
         return redirect()->route("records.index")->with("success", "Deleted");
     }
 }
